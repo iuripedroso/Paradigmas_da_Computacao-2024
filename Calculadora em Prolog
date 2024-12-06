@@ -1,0 +1,29 @@
+:- op(500, yfx, '+').
+:- op(500, yfx, '-').
+:- op(600, yfx, '*').
+:- op(600, yfx, '/').
+calcular(Valor, Valor) :-
+number(Valor).
+calcular(X / Y, Resultado) :-
+calcular(X, A),
+calcular(Y, B),
+Y \= 0,
+Resultado is A / B.
+calcular(X * Y, Resultado) :-
+calcular(X, A),
+calcular(Y, B),
+Resultado is A * B.
+calcular(X - Y, Resultado) :-
+calcular(X, A),
+calcular(Y, B),
+Resultado is A - B.
+calcular(X + Y, Resultado) :-
+calcular(X, A),
+calcular(Y, B),
+Resultado is A + B.
+calculadora :-
+write('digite a expressão: '),
+read(Expressao),
+calcular(Expressao, Resultado),
+write('o resultado é: '),
+write(Resultado), nl.
