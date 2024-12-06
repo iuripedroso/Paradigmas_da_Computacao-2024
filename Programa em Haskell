@@ -1,0 +1,28 @@
+main:: IO ()
+main = do
+
+    let entrada = ["Acerto", "Erro", "Acerto Critico", "Erro Critico"]
+
+    let mapearEntrada n = if n == "Acerto" 
+        then 1
+        else if n == "Acerto Critico"
+            then 5
+            else if n == "Erro Critico"
+                then -3
+                else 0
+    
+    let entradaPontos = map mapearEntrada entrada
+    
+    let filtarEntrada n = n > 0
+    
+    let pontosFiltrados = filter filtarEntrada entradaPontos
+    
+    let pontosFinais = foldr1 (+) pontosFiltrados
+
+    putStrLn (show(entrada))
+    putStrLn "1) Map"
+    putStrLn (show(entradaPontos))
+    putStrLn "2) Filter"
+    putStrLn (show(pontosFiltrados))
+    putStrLn "3) Reduce"
+    putStrLn (show(pontosFinais))
